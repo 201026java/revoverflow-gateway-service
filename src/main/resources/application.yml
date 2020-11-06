@@ -1,0 +1,30 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: RevOverflow-GatewayService
+  cloud:
+    gateway:
+      default-filters:
+      - PrefixPath=/
+      - name: CircuitBreaker
+        args:
+          name: default-fallback
+          fallbackUri: forward:/fallback
+      routes:
+      # =========================
+      - id: RevOverflow-UserService
+        uri: lb://RevOverflow-UserService
+        predicates:
+        - Path=/user/**
+      # =========================
+      - id: RevOverflow-QuestionService
+        uri: lb://RevOverflow-QuestionService
+        predicates:
+        - Path=/question/**
+      # =========================
+      - id: RevOverflow-AnswerService
+        uri: lb://RevOverflow-AnswerService
+        predicates:
+        - Path=/answers/**
+        
