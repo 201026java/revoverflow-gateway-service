@@ -26,5 +26,5 @@ spring:
       - id: RevOverflow-AnswerService
         uri: lb://RevOverflow-AnswerService
         predicates:
-        - Path=/answers/**
+        - Path=/answer/**
         
