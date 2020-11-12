@@ -5,6 +5,15 @@ spring:
     name: RevOverflow-GatewayService
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+            - GET
+            - POST
+            - PUT
+            allowedHeaders: "*"
       default-filters:
       - PrefixPath=/
       - name: CircuitBreaker
@@ -27,4 +36,3 @@ spring:
         uri: lb://RevOverflow-AnswerService
         predicates:
         - Path=/answer/**
-        
