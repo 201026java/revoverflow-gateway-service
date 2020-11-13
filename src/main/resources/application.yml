@@ -3,36 +3,38 @@ server:
 spring:
   application:
     name: RevOverflow-GatewayService
+  main:
+    allow-bean-definition-overriding: true
   cloud:
     gateway:
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods:
-            - GET
-            - POST
-            - PUT
-            allowedHeaders: "*"
       default-filters:
-      - PrefixPath=/
-      - name: CircuitBreaker
-        args:
-          name: default-fallback
-          fallbackUri: forward:/fallback
+        - PrefixPath=/
+        - name: CircuitBreaker
+          args:
+            name: default-fallback
+            fallbackUri: forward:/fallback
       routes:
-      # =========================
-      - id: RevOverflow-UserService
-        uri: lb://RevOverflow-UserService
-        predicates:
-        - Path=/user/**
-      # =========================
-      - id: RevOverflow-QuestionService
-        uri: lb://RevOverflow-QuestionService
-        predicates:
-        - Path=/question/**
-      # =========================
-      - id: RevOverflow-AnswerService
-        uri: lb://RevOverflow-AnswerService
-        predicates:
-        - Path=/answer/**
+        # =========================
+        - id: RevOverflow-UserService
+          uri: lb://RevOverflow-UserService
+          predicates:
+            - Path=/user/**
+        # =========================
+        - id: RevOverflow-QuestionService
+          uri: lb://RevOverflow-QuestionService
+          predicates:
+            - Path=/question/**
+        # =========================
+        - id: RevOverflow-AnswerService
+          uri: lb://RevOverflow-AnswerService
+          predicates:
+            - Path=/answer/**
+#Logging
+#logging:
+#  level:
+#    root: INFO
+#    org.springframework.web: DEBUG
+#   org.springframework.security: DEBUG
+#   org.springframework.web.HttpLogging: DEBUG
+#    org.springframework.cloud.gateway: DEBUG
+
