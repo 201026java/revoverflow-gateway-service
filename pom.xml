@@ -20,7 +20,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<coverage.reports.dir>./target/coverage-reports</coverage.reports.dir>
-		<sonar.projectKey>201026java_revoverflow-answer-service</sonar.projectKey>
+		<sonar.projectKey>201026java_revoverflow-gateway-service</sonar.projectKey>
   		<sonar.organization>201026java</sonar.organization>
   		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
   		<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
