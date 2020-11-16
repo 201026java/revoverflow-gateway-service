@@ -7,6 +7,15 @@ spring:
     allow-bean-definition-overriding: true
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+            - GET
+            - POST
+            - PUT
+            allowedHeaders: "*"
       default-filters:
       - PrefixPath=/
       - name: CircuitBreaker
